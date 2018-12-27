@@ -56,16 +56,35 @@ for blocks in blockList:
 running = True
 speed = 2
 
+
+runs = 0
+forward = 1
 while running:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			running = False
+	if runs == 500:
+		if forward == 0:
+			running = False
+		runs = 0 
+		forward = 0
+
+	if forward == 0:
+		if speed == 2:
+			time.sleep(.5)
+		speed = -2
+
 
 	for block in blockList:
 		pygame.draw.rect(screen, block.color, (block.xCoord, 100, 100, 100))
 		block.xCoord += speed
 		if block.xCoord == 1100:
 			block.xCoord = -100
+		if block.xCoord == -200:
+			block.xCoord = 1000
         #sleep needed to fine tune speed depending on system
 	time.sleep(.005)			
 	pygame.display.update()
+	v,f = pygame.mouse.get_pos()
+	print(v,f)
+	runs += 1
