@@ -40,7 +40,7 @@ for x in range(numBlocks):
         tempBlock.color = black
         count += 1
         blockList.append(tempBlock)
-        if count == 2 :
+        if count == 3 :
             count = 0
             toggle = 0
 
@@ -51,10 +51,17 @@ for blocks in blockList:
 #for block in blockList:
 	#pygame.draw.rect(screen, block.color, (block.xCoord, 100, 100, 100))
 
-#pygame.draw.rect(screen, red, (-50, 100, 100, 100)) 
+#pygame.draw.rect(screen, red, (-50, 100, 100, 100))
+green = (0,255,0)
+
+surf = pygame.Surface((300,150))
+surf.fill((255,255,255))
+pygame.draw.rect(surf, green, (0, 0, 300, 150), 7)
+screen.blit(surf, (350, 75))
+
 
 running = True
-speed = 2
+speed = 5
 
 
 runs = 0
@@ -70,9 +77,9 @@ while running:
 		forward = 0
 
 	if forward == 0:
-		if speed == 2:
+		if speed > 0:
 			time.sleep(.5)
-		speed = -2
+			speed = speed*(-1)
 
 
 	for block in blockList:
