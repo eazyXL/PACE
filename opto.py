@@ -5,6 +5,7 @@ import pygame
 
 red = (255,0,0)
 black = (0,0,0)
+green = (0,255,0)
 
 class rectObj:
 	xCoord = 0
@@ -30,13 +31,13 @@ for x in range(numBlocks):
     tempBlock = rectObj()
 
     if toggle == 0 :
-        tempBlock.xCoord = x*100
+        tempBlock.xCoord = (x*100)-100
         toggle = 1
         blockList.append(tempBlock)
         continue
 
     if toggle == 1 :
-        tempBlock.xCoord = x*100
+        tempBlock.xCoord = (x*100)-100
         tempBlock.color = black
         count += 1
         blockList.append(tempBlock)
@@ -44,16 +45,7 @@ for x in range(numBlocks):
             count = 0
             toggle = 0
 
-for blocks in blockList:
-    blocks.xCoord -= 100
 
-
-
-#for block in blockList:
-	#pygame.draw.rect(screen, block.color, (block.xCoord, 100, 100, 100))
-
-#pygame.draw.rect(screen, red, (-50, 100, 100, 100))
-green = (0,255,0)
 
 surf = pygame.Surface((300,150))
 surf.fill((255,255,255))
@@ -70,12 +62,13 @@ runs = 0
 forward = 1
 while running:
 	for event in pygame.event.get():
-		if event.type == pyga
-	#sets num runs in each direction and flips direction when needed	
+		if event.type == pygame.QUIT:
+			running = False
+	#sets num runs in each direction and flips direction when needed
 	if runs == 500:
 		if forward == 0:
 			running = False
-		runs = 0 
+		runs = 0
 		forward = 0
 	if forward == 0:
 		if speed > 0:
@@ -95,26 +88,24 @@ while running:
 			block.xCoord = -100
 		if block.xCoord == -200:
 			block.xCoord = 1000
-		
-													
+
+
         #sleep needed to fine tune speed depending on system
-	time.sleep(.005)			
+	time.sleep(.005)
 	pygame.display.update()
 	mouseX,mouseY = pygame.mouse.get_pos()
-	updateTime = time.perf_counter_ns()   
+	updateTime = time.perf_counter_ns()
 
-		
+
 	blockFile.write("Block in Focus Zone at Coords:\n")
 	if tempBlock.xCoord  < 350:
 		blockFile.write("%i %s %i %s %i\n" % (350, "to", (tempBlock.xCoord+100), "at time:", updateTime))
 	elif tempBlock.xCoord > 550:
-		blockFile.write("%i %s %i %s %i\n" % (tempBlock.xCoord, "to", 650, "at time:", updateTime))		
+		blockFile.write("%i %s %i %s %i\n" % (tempBlock.xCoord, "to", 650, "at time:", updateTime))
 	else:
-		blockFile.write("%i %s %i %s %i\n" % (tempBlock.xCoord, "to", (tempBlock.xCoord+100), "at time:", updateTime))	
+		blockFile.write("%i %s %i %s %i\n" % (tempBlock.xCoord, "to", (tempBlock.xCoord+100), "at time:", updateTime))
 
 	eyeFile.write("%i%s%i %s %i\n" % (mouseX, ",", mouseY, "at time:", updateTime))
 	print(mouseX,mouseY)
 
-
-	
 	runs += 1
