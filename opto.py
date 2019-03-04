@@ -97,13 +97,13 @@ while running:
 	updateTime = time.perf_counter_ns()
 
 
-	blockFile.write("Block in Focus Zone at Coords:\n")
+	#blockFile.write("Block in Focus Zone at Coords:\n")
 	if tempBlock.xCoord  < 350:
-		blockFile.write("%i %s %i %s %i\n" % (350, "to", (tempBlock.xCoord+100), "at time:", updateTime))
+		blockFile.write("%i%s%i %s %i\n" % (350, ",", (tempBlock.xCoord+100), "at time:", updateTime))
 	elif tempBlock.xCoord > 550:
-		blockFile.write("%i %s %i %s %i\n" % (tempBlock.xCoord, "to", 650, "at time:", updateTime))
+		blockFile.write("%i%s%i %s %i\n" % (tempBlock.xCoord, ",", 650, "at time:", updateTime))
 	else:
-		blockFile.write("%i %s %i %s %i\n" % (tempBlock.xCoord, "to", (tempBlock.xCoord+100), "at time:", updateTime))
+		blockFile.write("%i%s%i %s %i\n" % (tempBlock.xCoord, ",", (tempBlock.xCoord+100), "at time:", updateTime))
 
 	eyeFile.write("%i%s%i %s %i\n" % (mouseX, ",", mouseY, "at time:", updateTime))
 	print(mouseX,mouseY)
