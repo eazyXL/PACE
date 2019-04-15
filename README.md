@@ -2,6 +2,11 @@
 
 Requires Python3.7 and Pygame     
 
+opto2560.py:
+  -scaled to support ultra-wide display
+  -no longer updating opto.py
+  -changes made from opto.py to ensure correctness
+
 opto.py:    
   -goal to simulate optokinetic tape movement   
   -keep track of location of red segments that enter green highlighted area  
@@ -18,7 +23,5 @@ opto.py:
   *recording time of each update - DONE   
   *writing block location and time to file - DONE  
   *writing mouse location and time to file - DONE  
-  *test for latency issues with time recording and updates   
-  *analyze data  
-  *adapt code for project hardware specs
+  *adapt code for project hardware specs - DONE
   *implement further visual tests    
