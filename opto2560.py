@@ -62,8 +62,8 @@ pygame.draw.rect(surf, green, (0, 0, 400, 150), 7)
 #place at this pixel location
 screen.blit(surf, (1080, 75))
 
-blockFile = open("blockPos.txt", "w")
-eyeFile = open("eyePos.txt", "w")
+blockFile = open("OptoBlockPos.txt", "w")
+eyeFile = open("OptoEyePos.txt", "w")
 
 
 running = True
