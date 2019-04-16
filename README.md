@@ -24,4 +24,5 @@ opto.py:
   *writing block location and time to file - DONE  
   *writing mouse location and time to file - DONE  
   *adapt code for project hardware specs - DONE
+  *make rand test multithreaded
   *implement further visual tests    
